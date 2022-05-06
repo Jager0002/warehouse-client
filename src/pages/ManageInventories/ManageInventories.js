@@ -7,8 +7,8 @@ const ManageInventories = () => {
   const { books, setBooks } = useBooks();
 
   const handleDelete = (id) => {
-    const url = "http://localhost:5000/book/delete";
-    console.log(id);
+    const url = "https://shrouded-plateau-40134.herokuapp.com/book/delete";
+
     fetch(url, {
       method: "DELETE",
       headers: {
@@ -18,7 +18,7 @@ const ManageInventories = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
         const rest = books.filter((book) => book._id !== id);
         setBooks(rest);
       });

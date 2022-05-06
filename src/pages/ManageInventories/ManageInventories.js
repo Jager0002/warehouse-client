@@ -1,9 +1,54 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
+import InventoryItem from "../../components/InventoryItem/InventoryItem";
+import useBooks from "../../hooks/useBooks";
 
 const ManageInventories = () => {
+  const { books, setBooks } = useBooks();
+
+  const handleDelete = (id) => {
+    const url = "http://localhost:5000/book/delete";
+    console.log(id);
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        const rest = books.filter((book) => book._id !== id);
+        setBooks(rest);
+      });
+  };
+
   return (
-    <div>
-      
+    <div className="w-11/12 md:w-3/5 mx-auto">
+      <div>
+        <div className="grid grid-cols-5 justify-items-center">
+          <p>name</p>
+          <p>price</p>
+          <p>quantity</p>
+          <p>supplier</p>
+          <p>stockout</p>
+        </div>
+        {books?.map((book) => (
+          <InventoryItem
+            key={book._id}
+            book={book}
+            handleDelete={handleDelete}
+          ></InventoryItem>
+        ))}
+      </div>
+
+      <div
+        className="bg-slate-700 text-white w-1/2
+                py-3 mt-4 mx-auto text-center"
+      >
+        <Link to={"/add_item"}>Add new Item</Link>
+      </div>
     </div>
   );
 };

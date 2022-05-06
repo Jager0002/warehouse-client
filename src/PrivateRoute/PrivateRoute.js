@@ -8,7 +8,7 @@ function PrivateRoute({ children }) {
   let location = useLocation();
 
   if (loading) {
-    <Loader></Loader>;
+    return <Loader></Loader>;
   }
   if (!user) {
     return <Navigate to="/sign_in" state={{ from: location }} replace />;

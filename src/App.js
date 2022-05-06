@@ -10,10 +10,12 @@ import ManageInventories from "./pages/ManageInventories/ManageInventories";
 import MyItems from "./pages/MyItems/MyItems";
 import AddItems from "./pages/AddItems/AddItems";
 import NotFound from "./pages/Shared/NotFound/NotFound";
+import Inventory from "./pages/Inventory/Inventory";
+import Footer from "./pages/Shared/Footer/Footer";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <ToastContainer></ToastContainer>
       <Header></Header>
       <Routes>
@@ -21,7 +23,6 @@ function App() {
 
         <Route path="/sign_in" element={<SignIn />}></Route>
         <Route path="/sign_up" element={<SignUp />}></Route>
-
         <Route
           path="/manage_inventory"
           element={
@@ -46,10 +47,19 @@ function App() {
             </PrivateRoute>
           }
         ></Route>
+        <Route
+          path="/inventory/:id"
+          element={
+            // <PrivateRoute>
+            <Inventory />
+            // {/* </PrivateRoute> */}
+          }
+        ></Route>
 
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
-    </div>
+      <Footer></Footer>
+    </>
   );
 }
 

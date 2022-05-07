@@ -5,7 +5,9 @@ const useBooks = (quantity) => {
   const [loading, setLoading] = useState(false)
   useEffect(() => {
     setLoading(true)
-    fetch(`http://localhost:5000/books?quantity=${quantity}`)
+    fetch(
+      `https://shrouded-plateau-40134.herokuapp.com/books?quantity=${quantity}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setBooks(data)

@@ -7,7 +7,7 @@ const Inventory = () => {
   const [book, setBook] = useState({})
 
   useEffect(() => {
-    fetch(`http://localhost:5000/book/${id}`)
+    fetch(`https://shrouded-plateau-40134.herokuapp.com/book/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setBook(data)
@@ -16,7 +16,7 @@ const Inventory = () => {
 
   const handleDeliver = () => {
     const quantity = parseInt(book.quantity - 1)
-    const url = "http://localhost:5000/book/addStock"
+    const url = "https://shrouded-plateau-40134.herokuapp.com/book/addStock"
     const info = { id: book._id, quantity: quantity }
     fetch(url, {
       method: "PUT",
@@ -41,7 +41,7 @@ const Inventory = () => {
     }
     currentQuantity = parseInt(currentQuantity) + parseInt(previousQuantity)
 
-    const url = "http://localhost:5000/book/addStock"
+    const url = "https://shrouded-plateau-40134.herokuapp.com/book/addStock"
 
     const info = { id: book._id, quantity: currentQuantity }
     fetch(url, {
@@ -72,7 +72,7 @@ const Inventory = () => {
           <p>{book.description}</p>
           <p className="mt-4">supplier: {book.supplier}</p>
           <p className="mt-2">product ID: {book._id}</p>
-          <p className="mt-2">sold: 100</p>
+          {book.quantity <= 0 && <p className="mt-2">Sold Out</p>}
           <button
             className="bg-theme p-3 text-white rounded-md mt-2 hover:bg-accent"
             onClick={handleDeliver}

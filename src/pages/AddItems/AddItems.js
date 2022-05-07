@@ -14,7 +14,7 @@ const AddItems = () => {
     const { name, description, price, quantity, supplier, image } = data
 
     const email = user.email
-    fetch("http://localhost:5000/book", {
+    fetch("https://shrouded-plateau-40134.herokuapp.com/book", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

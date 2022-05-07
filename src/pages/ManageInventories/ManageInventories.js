@@ -12,7 +12,7 @@ const ManageInventories = () => {
 
   const handleDelete = () => {
     console.log(deleteId)
-    const url = "http://localhost:5000/book/delete"
+    const url = "https://shrouded-plateau-40134.herokuapp.com/book/delete"
 
     fetch(url, {
       method: "DELETE",

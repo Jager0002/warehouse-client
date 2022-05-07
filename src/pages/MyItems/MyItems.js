@@ -8,7 +8,7 @@ const MyItems = () => {
   const [user] = useAuthState(auth)
 
   const handleDelete = (id) => {
-    const url = "http://localhost:5000/book/delete"
+    const url = "https://shrouded-plateau-40134.herokuapp.com/book/delete"
 
     fetch(url, {
       method: "DELETE",
@@ -26,7 +26,7 @@ const MyItems = () => {
 
   useEffect(() => {
     const email = user.email
-    fetch(`http://localhost:5000/myBooks/${email}`)
+    fetch(`https://shrouded-plateau-40134.herokuapp.com/myBooks/${email}`)
       .then((res) => res.json())
       .then((data) => setMyBooks(data))
   }, [user])

@@ -12,6 +12,7 @@ import AddItems from "./pages/AddItems/AddItems"
 import NotFound from "./pages/Shared/NotFound/NotFound"
 import Inventory from "./pages/Inventory/Inventory"
 import Footer from "./pages/Shared/Footer/Footer"
+import ResetPassword from "./pages/ResetPassword/ResetPassword"
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
 
         <Route path="/sign_in" element={<SignIn />}></Route>
+        <Route path="/reset_password" element={<ResetPassword />}></Route>
         <Route path="/sign_up" element={<SignUp />}></Route>
         <Route
           path="/manage_inventory"

@@ -1,12 +1,11 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons"
 
 const SingleBook = ({ book }) => {
-  const { name, image, description, price, quantity, supplier, _id } = book;
-  const navigate = useNavigate();
-  
+  const { name, image, description, price, quantity, supplier, _id } = book
+  const navigate = useNavigate()
 
   return (
     <div className="p-5 shadow rounded-md">
@@ -25,19 +24,18 @@ const SingleBook = ({ book }) => {
         <div className="space-y-3">
           <h3 className="text-2xl font-medium">{price}$</h3>
           <p className="text-xl">quantity: {quantity}</p>
-          <button
-            className=""
-            onClick={() => navigate(`inventory/${_id}`)}
-          >
-            <FontAwesomeIcon icon={faArrowCircleRight} className='text-4xl'></FontAwesomeIcon>
+          <button className="" onClick={() => navigate(`inventory/${_id}`)}>
+            <FontAwesomeIcon
+              icon={faArrowCircleRight}
+              className="text-4xl text-theme"
+            ></FontAwesomeIcon>
             <p>update</p>
-            
           </button>
         </div>
       </div>
       <p className="mt-6">{description}</p>
     </div>
-  );
-};
+  )
+}
 
-export default SingleBook;
+export default SingleBook

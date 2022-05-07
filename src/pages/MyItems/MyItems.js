@@ -36,7 +36,7 @@ const MyItems = () => {
       {
         <div className="w-11/12 md:w-3/5 mx-auto my-10">
           <div>
-            <div className="grid grid-cols-5 justify-items-center bg-slate-700 text-white w-full text-center p-6">
+            <div className="grid grid-cols-5 justify-items-center bg-light text-theme font-semibold w-full text-center p-6">
               <p>name</p>
               <p>price</p>
               <p>quantity</p>

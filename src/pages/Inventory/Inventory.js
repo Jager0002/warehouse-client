@@ -14,6 +14,23 @@ const Inventory = () => {
       })
   }, [id])
 
+  const handleDeliver = () => {
+    const quantity = parseInt(book.quantity - 1)
+    const url = "http://localhost:5000/book/addStock"
+    const info = { id: book._id, quantity: quantity }
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(info),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+      })
+  }
+
   const handleUpdate = (e) => {
     e.preventDefault()
     const previousQuantity = book.quantity
@@ -56,7 +73,12 @@ const Inventory = () => {
           <p className="mt-4">supplier: {book.supplier}</p>
           <p className="mt-2">product ID: {book._id}</p>
           <p className="mt-2">sold: 100</p>
-          <button>delivered</button>
+          <button
+            className="bg-theme p-3 text-white rounded-md mt-2"
+            onClick={handleDeliver}
+          >
+            delivered
+          </button>
         </div>
         <div>
           <form onSubmit={handleUpdate}>
@@ -68,12 +90,10 @@ const Inventory = () => {
                 name="quantity"
                 placeholder="new stock quantity"
               />
-              <button className="bg-slate-700 text-white py-3 ">
-                add stock
-              </button>
+              <button className="bg-theme text-white py-3 ">add stock</button>
               <Link
                 to={"/manage_inventory"}
-                className="bg-slate-700 text-white
+                className="bg-light text-theme
               py-3 mt-4 text-center"
               >
                 Manage Inventories

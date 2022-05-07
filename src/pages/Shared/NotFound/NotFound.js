@@ -1,11 +1,12 @@
-import React from "react";
+import React from "react"
+import notFound from "../../../assets/404.png"
 
 const NotFound = () => {
   return (
-    <div>
-      <h2>not found</h2>
+    <div className="w-full">
+      <img src={notFound} alt="" />
     </div>
-  );
-};
+  )
+}
 
-export default NotFound;
+export default NotFound

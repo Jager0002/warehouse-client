@@ -1,6 +1,8 @@
 import React from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useForm } from "react-hook-form"
+import { Navigate } from "react-router-dom"
+import { toast } from "react-toastify"
 import auth from "../../firebase/firebase.init"
 
 const AddItems = () => {
@@ -9,7 +11,7 @@ const AddItems = () => {
   const { register, handleSubmit } = useForm()
   const onSubmit = (data) => {
     console.log(data)
-    const { name, description, price, quantity, supplier, url } = data
+    const { name, description, price, quantity, supplier, image } = data
 
     const email = user.email
     fetch("http://localhost:5000/book", {
@@ -23,10 +25,13 @@ const AddItems = () => {
         price,
         quantity,
         supplier,
-        url,
+        image,
         email,
       }),
-    }).then((res) => console.log(res))
+    }).then((res) => {
+      toast.success("item added")
+      Navigate("/manage_inventory")
+    })
   }
   return (
     <div>
@@ -36,11 +41,11 @@ const AddItems = () => {
         </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col m-2">
-            <label className="font-medium text-xl" htmlFor="name">
+            <label className="font-medium" htmlFor="name">
               Name
             </label>
             <input
-              className="border p-2"
+              className=" p-3 mt-2 outline-none bg-gray-100"
               id="name"
               type="text"
               placeholder="enter name"
@@ -48,11 +53,11 @@ const AddItems = () => {
             />
           </div>
           <div className="flex flex-col m-2">
-            <label className="font-medium text-xl" htmlFor="name">
+            <label className="font-medium" htmlFor="name">
               Supplier
             </label>
             <input
-              className="border p-2"
+              className=" p-3 mt-2 outline-none bg-gray-100"
               id="supplier"
               type="text"
               placeholder="supplier"
@@ -61,11 +66,11 @@ const AddItems = () => {
           </div>
 
           <div className="flex flex-col m-2">
-            <label className="font-medium text-xl" htmlFor="price">
+            <label className="font-medium" htmlFor="price">
               Price
             </label>
             <input
-              className="border p-2"
+              className=" p-3 mt-2 outline-none bg-gray-100"
               id="price"
               type="number"
               placeholder="enter price"
@@ -73,11 +78,11 @@ const AddItems = () => {
             />
           </div>
           <div className="flex flex-col m-2">
-            <label className="font-medium text-xl" htmlFor="price">
+            <label className="font-medium" htmlFor="price">
               Quantity
             </label>
             <input
-              className="border p-2"
+              className=" p-3 mt-2 outline-none bg-gray-100"
               id="quantity"
               type="number"
               placeholder="enter Quantity"
@@ -85,23 +90,23 @@ const AddItems = () => {
             />
           </div>
           <div className="flex flex-col m-2">
-            <label className="font-medium text-xl" htmlFor="url">
+            <label className="font-medium" htmlFor="image">
               Image url
             </label>
             <input
-              className="border p-2"
-              id="url"
+              className=" p-3 mt-2 outline-none bg-gray-100"
+              id="image"
               type="text"
-              placeholder="Enter Url"
-              {...register("url")}
+              placeholder="Enter image Url"
+              {...register("image")}
             />
           </div>
           <div className="flex flex-col m-2">
-            <label className="font-medium text-xl" htmlFor="name">
+            <label className="font-medium" htmlFor="name">
               Description
             </label>
             <textarea
-              className="border p-2"
+              className=" p-3 mt-2 outline-none bg-gray-100"
               id="description"
               type="text"
               rows="5"
@@ -111,7 +116,7 @@ const AddItems = () => {
           </div>
           <div className="text-center">
             <input
-              className="m-2 cursor-pointer border bg-slate-700 text-white p-4 px-8 hover:bg-slate-600"
+              className="m-2 cursor-pointer border bg-theme text-white p-4 px-8 hover:bg-accent rounded-md"
               type="submit"
             />
           </div>

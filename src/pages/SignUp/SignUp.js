@@ -1,77 +1,103 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
-import Loader from "../../components/Loader/Loader";
-import useFirebase from "../../hooks/useFirebase";
+import React from "react"
+import { useForm } from "react-hook-form"
+import { toast } from "react-toastify"
+import Loader from "../../components/Loader/Loader"
+import useFirebase from "../../hooks/useFirebase"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons"
 
 const SignUp = () => {
-  const { handleSignUp, createLoading } = useFirebase();
-  const { register, handleSubmit, reset } = useForm();
+  const { handleSignUp, createLoading } = useFirebase()
+  const { register, handleSubmit, reset } = useForm()
   const onSubmit = (data) => {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-      toast.error("invalid email");
-      return;
+      toast.error("invalid email")
+      return
     }
     if (data.password.length < 6) {
-      toast.error("must be more than 6 charcter");
-      return;
+      toast.error("must be more than 6 charcter")
+      return
     }
     if (data.password !== data.rePassword) {
-      toast.error("password does not match");
-      return;
+      toast.error("password does not match")
+      return
     }
-    handleSignUp(data.email, data.password);
-    reset();
-  };
+    handleSignUp(data.email, data.password)
+    reset()
+  }
   return createLoading ? (
     <Loader></Loader>
   ) : (
-    <div>
+    <div className="w-4/5 md:w-3/5 lg:w-1/3 mx-auto mt-16">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label htmlFor="name">Full Name</label>
+        <h2 className="text-3xl font-semibold text-center mb-16">Sign Up</h2>
+        <div className="mb-8 relative">
           <input
-            className="border"
+            className="flex flex-col bg-gray-100 p-3 w-full outline-none"
             id="name"
             type="text"
             placeholder="enter full name"
             {...register("firstName")}
           />
+          <div className="absolute right-5 top-3 text-xl">
+            <label htmlFor="name">
+              <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
+            </label>
+          </div>
         </div>
-        <div>
-          <label htmlFor="email">Email Address</label>
+
+        <div className="mb-8 relative">
           <input
-            className="border"
+            className="flex flex-col bg-gray-100 p-3 w-full outline-none"
             type="email"
             id="email"
             placeholder="enter email address"
             {...register("email")}
           />
+          <div className="absolute right-5 top-3 text-xl">
+            <label htmlFor="email">
+              <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
+            </label>
+          </div>
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
+
+        <div className="mb-8 relative">
           <input
-            className="border"
+            className="flex flex-col bg-gray-100 p-3 w-full outline-none"
             type="password"
             id="password"
             placeholder="enter password"
             {...register("password")}
           />
+          <div className="absolute right-5 top-3 text-xl">
+            <label htmlFor="password">
+              <FontAwesomeIcon icon={faLock}></FontAwesomeIcon>
+            </label>
+          </div>
         </div>
-        <div>
-          <label htmlFor="re_password">Re Enter Password</label>
+
+        <div className="mb-8 relative">
           <input
-            className="border"
+            className="flex flex-col bg-gray-100 p-3 w-full outline-none"
             type="password"
             id="re_password"
             placeholder="re enter password"
             {...register("rePassword")}
           />
+          <div className="absolute right-5 top-3 text-xl">
+            <label htmlFor="password">
+              <FontAwesomeIcon icon={faLock}></FontAwesomeIcon>
+            </label>
+          </div>
         </div>
-        <input type="submit" vlaue="sign up" />
+        <input
+          type="submit"
+          vlaue="sign up"
+          className="w-3/5 block mx-auto bg-accent text-white p-3 rounded-md mt-4"
+        />
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default SignUp;
+export default SignUp

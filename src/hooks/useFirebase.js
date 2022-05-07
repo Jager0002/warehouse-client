@@ -20,6 +20,7 @@ const useFirebase = () => {
   const location = useLocation();
   const navigate = useNavigate();
   let from = location.state?.from?.pathname || "/";
+  console.log(location.state?.from?.pathname);
   useEffect(() => {
     if (createUser || signInUser) {
       navigate(from, { replace: true });

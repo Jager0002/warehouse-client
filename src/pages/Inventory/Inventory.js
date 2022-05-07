@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
+import React, { useEffect, useState } from "react"
+import { Link, useParams } from "react-router-dom"
+import { toast } from "react-toastify"
 
 const Inventory = () => {
-  const { id } = useParams();
-  const [book, setBook] = useState({});
+  const { id } = useParams()
+  const [book, setBook] = useState({})
 
   useEffect(() => {
-    fetch(`https://shrouded-plateau-40134.herokuapp.com/book/${id}`)
+    fetch(`http://localhost:5000/book/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        setBook(data);
-      });
-  }, [id]);
+        setBook(data)
+      })
+  }, [id])
 
   const handleUpdate = (e) => {
-    e.preventDefault();
-    const previousQuantity = book.quantity;
-    let currentQuantity = e.target.quantity.value;
+    e.preventDefault()
+    const previousQuantity = book.quantity
+    let currentQuantity = e.target.quantity.value
     if (!currentQuantity) {
-      toast.warning("please enter quantity");
-      return;
+      toast.warning("please enter quantity")
+      return
     }
-    currentQuantity = parseInt(currentQuantity) + parseInt(previousQuantity);
+    currentQuantity = parseInt(currentQuantity) + parseInt(previousQuantity)
 
-    const url = "http://localhost:5000/book/addStock";
+    const url = "http://localhost:5000/book/addStock"
 
-    const info = { id: book._id, quantity: currentQuantity };
+    const info = { id: book._id, quantity: currentQuantity }
     fetch(url, {
       method: "PUT",
       headers: {
@@ -36,9 +36,9 @@ const Inventory = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-      });
-  };
+        console.log(data)
+      })
+  }
 
   return (
     <div className="mb-16">
@@ -83,7 +83,7 @@ const Inventory = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Inventory;
+export default Inventory

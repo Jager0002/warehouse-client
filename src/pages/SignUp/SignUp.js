@@ -5,6 +5,7 @@ import Loader from "../../components/Loader/Loader"
 import useFirebase from "../../hooks/useFirebase"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons"
+import { Link } from "react-router-dom"
 
 const SignUp = () => {
   const { handleSignUp, createLoading } = useFirebase()
@@ -92,10 +93,13 @@ const SignUp = () => {
         </div>
         <input
           type="submit"
-          vlaue="sign up"
-          className="w-3/5 block mx-auto bg-accent text-white p-3 rounded-md mt-4"
+          value="Sign up"
+          className="w-3/5 block mx-auto bg-theme hover:bg-accent text-white p-3 rounded-md mt-4 cursor-pointer"
         />
       </form>
+      <Link to="/sign_in">
+        <p className="text-center underline  mt-4">I have a account</p>
+      </Link>
     </div>
   )
 }

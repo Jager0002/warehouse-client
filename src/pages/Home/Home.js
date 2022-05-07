@@ -7,11 +7,17 @@ const Home = () => {
     <div className="w-4/5 mx-auto">
       <div className="relative">
         <img
-          className="w-[1536px] h-[500px] object-cover"
+          className="w-[1536px] md:h-[500px] h-[300px] object-cover"
           src={warehouse}
           alt=""
         />
-        <div className="bg-transparent hover:bg-() h-[500px] absolute top-0 w-full"></div>
+        <div className="group bg-transparent hover:bg-[rgba(0,0,0,.6)] md:h-[500px] h-[300px] absolute top-0 w-full transition-colors">
+          <div className="flex justify-center items-center h-full text-center">
+            <h2 className="group-hover:text-white text-transparent text-4xl font-bold">
+              Collections of all the best sellers
+            </h2>
+          </div>
+        </div>
       </div>
       <Books></Books>
     </div>

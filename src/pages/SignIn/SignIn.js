@@ -67,13 +67,13 @@ const SignIn = () => {
           <Link to="/sign_up">Dont't have account?</Link>
           <Link to="/reset_password">Forget Password?</Link>
         </div>
-        <div className="w-3/5 bg-theme mx-auto p-3 text-center text-white rounded-md my-5">
+        <div className="w-3/5 bg-theme mx-auto p-3 text-center text-white rounded-md my-5 cursor-pointer hover:bg-accent">
           <input type="submit" value="Sign In" />
         </div>
 
         <button
           onClick={() => signInWithGoogle()}
-          className="w-3/5 bg-light p-3 text-theme mx-auto block rounded-md"
+          className="w-3/5 bg-light p-3 text-theme mx-auto block rounded-md cursor-pointer"
         >
           sign in with google
         </button>

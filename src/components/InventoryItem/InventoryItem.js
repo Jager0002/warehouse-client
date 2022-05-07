@@ -14,7 +14,7 @@ const InventoryItem = ({ book, handlePopup }) => {
           <p>{supplier}</p>
           <button
             className="bg-accent text-white
-                    py-3 text-center px-4 rounded-md"
+                    py-3 text-center px-4 rounded-md hover:bg-purple-600"
             onClick={() => handlePopup(_id)}
           >
             delete

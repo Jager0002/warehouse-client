@@ -24,7 +24,7 @@ const Header = () => {
         </div>
 
         {/* desktop nav */}
-        <div className="space-x-6 hidden md:block">
+        <div className="space-x-2 xl:space-x-6 hidden md:block">
           <CustomLink to="/" className="p-3 rounded">
             Home
           </CustomLink>
@@ -81,12 +81,12 @@ const Header = () => {
               className="bg-theme py-2 px-10 text-white"
               onClick={() => signOut(auth)}
             >
-              Signout
+              Sign out
             </button>
           </>
         ) : (
           <Link
-            className="bg-theme text-white py-2 block text-center"
+            className="bg-light text-theme py-2 block text-center"
             to="/sign_in "
           >
             Sign In

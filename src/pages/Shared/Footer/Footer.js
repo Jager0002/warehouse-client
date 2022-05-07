@@ -11,14 +11,14 @@ const Footer = () => {
         <Link to="/">Blogs</Link>
         <Link to="/">Route</Link>
       </div>
-      <div className="mx-auto">
+      <div className="mx-auto text-center">
         <h2 className="mb-4 text-center">Features</h2>
-        <p>website features</p>
-        <p>website features</p>
-        <p>website features</p>
-        <p>website features</p>
+        <p>Classics</p>
+        <p>Comic Book or Graphic Novel</p>
+        <p>Detective and Mystery</p>
+        <p>Fantasy</p>
       </div>
-      <div className="mx-auto">
+      <div className="mx-auto text-center">
         <h2 className="mb-4 text-center">Social Media</h2>
         <div>
           <img src="icon here" alt="" />

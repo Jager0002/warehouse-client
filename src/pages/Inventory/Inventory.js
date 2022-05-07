@@ -74,7 +74,7 @@ const Inventory = () => {
           <p className="mt-2">product ID: {book._id}</p>
           <p className="mt-2">sold: 100</p>
           <button
-            className="bg-theme p-3 text-white rounded-md mt-2"
+            className="bg-theme p-3 text-white rounded-md mt-2 hover:bg-accent"
             onClick={handleDeliver}
           >
             delivered

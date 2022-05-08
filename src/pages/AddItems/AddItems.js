@@ -1,17 +1,17 @@
 import React from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useForm } from "react-hook-form"
-import { Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import auth from "../../firebase/firebase.init"
 
 const AddItems = () => {
   const [user] = useAuthState(auth)
-
+  const navigate = useNavigate()
   const { register, handleSubmit } = useForm()
   const onSubmit = (data) => {
     console.log(data)
-    const { name, description, price, quantity, supplier, image } = data
+    const { name, description, price, quantity, supplier, image, genre } = data
 
     const email = user.email
     fetch("https://shrouded-plateau-40134.herokuapp.com/book", {
@@ -27,10 +27,11 @@ const AddItems = () => {
         supplier,
         image,
         email,
+        genre,
       }),
     }).then((res) => {
       toast.success("item added")
-      Navigate("/manage_inventory")
+      navigate("/manage_inventory")
     })
   }
   return (
@@ -49,7 +50,7 @@ const AddItems = () => {
               id="name"
               type="text"
               placeholder="enter name"
-              {...register("name")}
+              {...register("name", { required: true })}
             />
           </div>
           <div className="flex flex-col m-2">
@@ -61,7 +62,19 @@ const AddItems = () => {
               id="supplier"
               type="text"
               placeholder="supplier"
-              {...register("supplier")}
+              {...register("supplier", { required: true })}
+            />
+          </div>
+          <div className="flex flex-col m-2">
+            <label className="font-medium" htmlFor="name">
+              Genre
+            </label>
+            <input
+              className=" p-3 mt-2 outline-none bg-gray-100"
+              id="genre"
+              type="text"
+              placeholder="genre"
+              {...register("genre", { required: true })}
             />
           </div>
 
@@ -74,7 +87,7 @@ const AddItems = () => {
               id="price"
               type="number"
               placeholder="enter price"
-              {...register("price")}
+              {...register("price", { required: true })}
             />
           </div>
           <div className="flex flex-col m-2">
@@ -86,7 +99,7 @@ const AddItems = () => {
               id="quantity"
               type="number"
               placeholder="enter Quantity"
-              {...register("quantity")}
+              {...register("quantity", { required: true })}
             />
           </div>
           <div className="flex flex-col m-2">
@@ -98,7 +111,7 @@ const AddItems = () => {
               id="image"
               type="text"
               placeholder="Enter image Url"
-              {...register("image")}
+              {...register("image", { required: true })}
             />
           </div>
           <div className="flex flex-col m-2">
@@ -111,7 +124,7 @@ const AddItems = () => {
               type="text"
               rows="5"
               placeholder="description"
-              {...register("description")}
+              {...register("description", { required: true })}
             />
           </div>
           <div className="text-center">

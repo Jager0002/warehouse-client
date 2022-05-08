@@ -38,7 +38,6 @@ const ManageInventories = () => {
   }, [popup])
   const handlePopup = (_id) => {
     setdeleteId(_id)
-
     setPopup(true)
   }
 
@@ -62,12 +61,10 @@ const ManageInventories = () => {
             ></InventoryItem>
           ))}
         </div>
-        <div
-          className="bg-light text-theme w-1/2 font-medium
-                  py-3 mt-4 mx-auto text-center rounded-md"
-        >
-          <Link to={"/add_item"}>Add new Item</Link>
-        </div>
+        
+          <Link to={"/add_item"}><p className="bg-light text-theme w-1/2 font-medium
+                  py-3 mt-4 mx-auto text-center rounded-md">Add new Item</p></Link>
+      
       </div>
     </>
   )

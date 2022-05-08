@@ -14,7 +14,7 @@ const Header = () => {
   const [user] = useAuthState(auth)
   const [toggle, setToggle] = useState(false)
   return (
-    <div className="bg-white border-b-2 border-theme">
+    <div className="bg-white shadow-lg">
       <div className="px-10 lg:px-48 flex justify-between text-theme h-20 items-center">
         <div className="">
           <Link to="/">
@@ -30,6 +30,9 @@ const Header = () => {
           </CustomLink>
           {user ? (
             <>
+              <CustomLink className="p-3 rounded" to="/blog">
+                Blog
+              </CustomLink>
               <CustomLink className="p-3 rounded" to="/manage_inventory">
                 Manage Inventory
               </CustomLink>

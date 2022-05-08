@@ -40,7 +40,7 @@ const SignUp = () => {
             placeholder="enter full name"
             {...register("firstName")}
           />
-          <div className="absolute right-5 top-3 text-xl">
+          <div className="absolute right-5 top-3 text-xl text-dark">
             <label htmlFor="name">
               <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
             </label>
@@ -55,7 +55,7 @@ const SignUp = () => {
             placeholder="enter email address"
             {...register("email")}
           />
-          <div className="absolute right-5 top-3 text-xl">
+          <div className="absolute right-5 top-3 text-xl text-dark">
             <label htmlFor="email">
               <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
             </label>
@@ -70,7 +70,7 @@ const SignUp = () => {
             placeholder="enter password"
             {...register("password")}
           />
-          <div className="absolute right-5 top-3 text-xl">
+          <div className="absolute right-5 top-3 text-xl text-dark">
             <label htmlFor="password">
               <FontAwesomeIcon icon={faLock}></FontAwesomeIcon>
             </label>
@@ -85,7 +85,7 @@ const SignUp = () => {
             placeholder="re enter password"
             {...register("rePassword")}
           />
-          <div className="absolute right-5 top-3 text-xl">
+          <div className="absolute right-5 top-3 text-xl text-dark">
             <label htmlFor="password">
               <FontAwesomeIcon icon={faLock}></FontAwesomeIcon>
             </label>

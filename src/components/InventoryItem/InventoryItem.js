@@ -1,6 +1,4 @@
 import React from "react"
-import { useState } from "react"
-import Popup from "../Popup/Popup"
 
 const InventoryItem = ({ book, handlePopup }) => {
   const { name, price, quantity, supplier, _id } = book
@@ -14,7 +12,7 @@ const InventoryItem = ({ book, handlePopup }) => {
           <p>{supplier}</p>
           <button
             className="bg-accent text-white
-                    py-3 text-center px-4 rounded-md hover:bg-purple-600"
+                    py-3 text-center px-4 rounded-md hover:bg-theme"
             onClick={() => handlePopup(_id)}
           >
             delete

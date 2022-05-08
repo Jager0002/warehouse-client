@@ -13,6 +13,7 @@ import NotFound from "./pages/Shared/NotFound/NotFound"
 import Inventory from "./pages/Inventory/Inventory"
 import Footer from "./pages/Shared/Footer/Footer"
 import ResetPassword from "./pages/ResetPassword/ResetPassword"
+import Blog from "./pages/Blog/Blog"
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
             </PrivateRoute>
           }
         ></Route>
+        <Route path="/blog" element={<Blog />}></Route>
         <Route
           path="/inventory/:id"
           element={

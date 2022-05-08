@@ -25,6 +25,7 @@ const SignIn = () => {
 
   const onSubmit = (data) => {
     handleSignIn(data.email, data.password)
+    console.log(data)
     reset()
   }
 
@@ -42,7 +43,7 @@ const SignIn = () => {
             placeholder="enter email address"
             {...register("email")}
           />
-          <div className="absolute right-5 top-3 text-xl">
+          <div className="absolute right-5 top-3 text-xl text-dark">
             <label htmlFor="email">
               <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
             </label>
@@ -56,10 +57,10 @@ const SignIn = () => {
             placeholder="enter password"
             {...register("password")}
           />
-          <div className="absolute right-5 top-3 text-xl">
+          <div className="absolute right-5 top-3 text-xl text-dark">
             <label htmlFor="password">
               {" "}
-              <FontAwesomeIcon icon={faLock}></FontAwesomeIcon>
+              <FontAwesomeIcon icon={faLock} ></FontAwesomeIcon>
             </label>
           </div>
         </div>
@@ -67,9 +68,11 @@ const SignIn = () => {
           <Link to="/sign_up">Dont't have account?</Link>
           <Link to="/reset_password">Forget Password?</Link>
         </div>
-        <div className="w-3/5 bg-theme mx-auto p-3 text-center text-white rounded-md my-5 cursor-pointer hover:bg-accent">
-          <input type="submit" value="Sign In" />
-        </div>
+        <input
+          type="submit"
+          value="Sign in"
+          className="w-3/5 block mx-auto bg-theme hover:bg-accent text-white p-3 rounded-md mt-4 cursor-pointer mb-5"
+        />
 
         <button
           onClick={() => signInWithGoogle()}

@@ -5,6 +5,7 @@ import { toast } from "react-toastify"
 const Inventory = () => {
   const { id } = useParams()
   const [book, setBook] = useState({})
+  const [change, setChange] = useState(true)
 
   useEffect(() => {
     fetch(`https://shrouded-plateau-40134.herokuapp.com/book/${id}`)
@@ -12,7 +13,7 @@ const Inventory = () => {
       .then((data) => {
         setBook(data)
       })
-  }, [id])
+  }, [id, change])
 
   const handleDeliver = () => {
     const quantity = parseInt(book.quantity - 1)
@@ -27,6 +28,7 @@ const Inventory = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        setChange(!change)
         console.log(data)
       })
   }
@@ -70,14 +72,15 @@ const Inventory = () => {
         <div className="md:col-span-2 w-4/5">
           <h2 className="text-2xl font-medium mb-4">{book.name}</h2>
           <p>{book.description}</p>
-          <p className="mt-4">supplier: {book.supplier}</p>
-          <p className="mt-2">product ID: {book._id}</p>
+          <p className="mt-4">Supplier: {book.supplier}</p>
+          <p className="mt-2">Product ID: {book._id}</p>
+          <p className="mt-2">Product Quantity: {book.quantity}</p>
           {book.quantity <= 0 && <p className="mt-2">Sold Out</p>}
           <button
             className="bg-theme p-3 text-white rounded-md mt-2 hover:bg-accent"
             onClick={handleDeliver}
           >
-            delivered
+            Delivered
           </button>
         </div>
         <div>
@@ -85,7 +88,7 @@ const Inventory = () => {
             <div className="flex flex-col">
               <label htmlFor="quantity">Books quantity</label>
               <input
-                className="p-3 border my-4"
+                className="p-3 border my-4 outline-none"
                 type="number"
                 name="quantity"
                 placeholder="new stock quantity"

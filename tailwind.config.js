@@ -5,7 +5,8 @@ module.exports = {
       colors:{
         'theme': '#5806f9',
         'accent':'#714cfe',
-        'light':'#ede7fe'
+        'light':'#ede7fe',
+        'dark':'#48188F',
       }
     },
   },

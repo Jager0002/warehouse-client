@@ -1,16 +1,14 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons"
 
 const SingleBook = ({ book }) => {
   const { name, image, description, price, quantity, supplier, _id } = book
   const navigate = useNavigate()
 
   return (
-    <div className="p-5 shadow rounded-md">
+    <div className="p-5 rounded-md cursor-pointer hover:shadow-2xl transition-all">
       <div>
-        <h2 className="text-3xl ">{name}</h2>
+        <h2 className="text-2xl ">{name}</h2>
         <p className="text-xl">Supplire: {supplier}</p>
       </div>
       <div className="grid grid-cols-3 my-2 items-center justify-items-center mt-6 gap-6">
@@ -25,11 +23,7 @@ const SingleBook = ({ book }) => {
           <h3 className="text-2xl font-medium">{price}$</h3>
           <p className="text-xl">quantity: {quantity}</p>
           <button className="" onClick={() => navigate(`inventory/${_id}`)}>
-            <FontAwesomeIcon
-              icon={faArrowCircleRight}
-              className="text-4xl text-theme"
-            ></FontAwesomeIcon>
-            <p>update</p>
+            <p className="p-3 px-5 bg-light text-theme font-medium">update</p>
           </button>
         </div>
       </div>
